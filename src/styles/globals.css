@@ -222,25 +222,146 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* Image treatments */
+/* ─── Editorial image system ───────────────────────────────────────
+   Photographs are not framed rectangles here; they emerge from the
+   ivory atmosphere. The composition is layered:
+
+     .editorial-image   — outer canvas. Carries an ambient halo and
+                          gently breathes in scale (barely perceptible).
+     .editorial-image__plate
+                        — the actual photograph plate. Receives the
+                          feathered radial mask, cinematic color grade,
+                          and a soft inner light wrap.
+     .editorial-image__bloom
+                        — pseudo overlay on the plate that adds a
+                          warm rolloff / filmic bloom toward the
+                          highlights without harming saturation.
+     .editorial-image__veil
+                        — atmospheric haze that blends the plate into
+                          the surrounding scene at the edges.
+
+   No hard borders, no dropshadow boxes — only light.
+─────────────────────────────────────────────────────────────────── */
 .editorial-image {
   position: relative;
-  overflow: hidden;
-  border-radius: 2px;
-  background: var(--pearl);
+  isolation: isolate;
+  background: transparent;
+  animation: img-breath 14s ease-in-out infinite;
+  will-change: transform;
 }
-.editorial-image img {
+
+@keyframes img-breath {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.012); }
+}
+
+.editorial-image__plate {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* Feathered edges — the photo dissolves into atmosphere */
+  -webkit-mask-image: radial-gradient(
+    ellipse 92% 92% at 50% 50%,
+    #000 55%,
+    rgba(0, 0, 0, 0.92) 70%,
+    rgba(0, 0, 0, 0.55) 85%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 92% 92% at 50% 50%,
+    #000 55%,
+    rgba(0, 0, 0, 0.92) 70%,
+    rgba(0, 0, 0, 0.55) 85%,
+    transparent 100%
+  );
+}
+
+.editorial-image__plate img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1),
-    filter 1.6s ease;
-  filter: saturate(0.92) contrast(0.98);
+  /* Cinematic ivory grade — warm highlights, lifted blacks, lower contrast */
+  filter:
+    brightness(1.04)
+    contrast(0.92)
+    saturate(0.85)
+    sepia(0.08);
+  transition:
+    transform 2.2s cubic-bezier(0.16, 0.84, 0.24, 1),
+    filter 2.2s cubic-bezier(0.16, 0.84, 0.24, 1);
 }
-.editorial-image:hover img {
-  transform: scale(1.05);
-  filter: saturate(1.02) contrast(1);
+
+/* Soft filmic bloom toward highlights (warm rolloff, no haloing) */
+.editorial-image__bloom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background:
+    radial-gradient(
+      ellipse 60% 45% at 50% 35%,
+      rgba(255, 244, 220, 0.55) 0%,
+      rgba(255, 244, 220, 0) 70%
+    );
+}
+
+/* Inner light-wrap + restrained vignette */
+.editorial-image__plate::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 80% 80% at 50% 30%,
+      rgba(255, 247, 232, 0.18) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 100% 100% at 50% 100%,
+      rgba(75, 55, 30, 0.18) 0%,
+      transparent 55%
+    );
+}
+
+/* Atmospheric haze blending the plate into the surrounding page */
+.editorial-image__veil {
+  position: absolute;
+  inset: -8%;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(
+      ellipse 65% 60% at 50% 50%,
+      rgba(216, 194, 154, 0.22) 0%,
+      rgba(239, 231, 216, 0.12) 45%,
+      rgba(251, 248, 242, 0) 75%
+    );
+  filter: blur(24px);
+}
+
+/* Hover — slow, weightless. Bloom intensifies; grade warms slightly. */
+.editorial-image:hover .editorial-image__plate img {
+  transform: scale(1.035);
+  filter:
+    brightness(1.06)
+    contrast(0.95)
+    saturate(0.92)
+    sepia(0.06);
+}
+.editorial-image .editorial-image__bloom {
+  transition: opacity 2.2s cubic-bezier(0.16, 0.84, 0.24, 1);
+  opacity: 0.85;
+}
+.editorial-image:hover .editorial-image__bloom {
+  opacity: 1;
+}
+
+/* Reduced-motion: hold the photograph still */
+@media (prefers-reduced-motion: reduce) {
+  .editorial-image { animation: none; }
 }
 
 /* Scrollbar */
@@ -272,11 +393,8 @@ html.lenis body {
   will-change: transform;
 }
 
-/* Improve image rendering on mobile */
+/* Mobile rhythm — touch ergonomics, image softness, type rhythm */
 @media (max-width: 768px) {
-  .editorial-image img {
-    transition: transform 2s cubic-bezier(0.16, 0.84, 0.24, 1);
-  }
   /* iOS Safari: kill tap highlights, optimize touch */
   a, button, .btn-luxe {
     -webkit-tap-highlight-color: transparent;
@@ -285,6 +403,38 @@ html.lenis body {
   /* Slightly tighter heading rhythm on tiny screens */
   .font-display {
     letter-spacing: -0.008em;
+    line-height: 1.06;
+  }
+  /* Body type more readable / less wide */
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Soften feathered mask further on small screens
+     so edges remain dreamlike at narrow widths */
+  .editorial-image__plate {
+    -webkit-mask-image: radial-gradient(
+      ellipse 90% 92% at 50% 50%,
+      #000 50%,
+      rgba(0, 0, 0, 0.9) 68%,
+      rgba(0, 0, 0, 0.45) 85%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 90% 92% at 50% 50%,
+      #000 50%,
+      rgba(0, 0, 0, 0.9) 68%,
+      rgba(0, 0, 0, 0.45) 85%,
+      transparent 100%
+    );
+  }
+  /* Gentler image-section vertical offsets so cadence still reads
+     elegant on tall narrow viewports */
+  .editorial-image {
+    animation-duration: 16s;
+  }
+  /* Reduce eyebrow letter-spacing creep on tiny widths */
+  .eyebrow {
+    letter-spacing: 0.32em;
   }
 }
 
