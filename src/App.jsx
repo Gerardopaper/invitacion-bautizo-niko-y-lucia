@@ -2,9 +2,11 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import useLenis from './hooks/useLenis';
 import Hero from './sections/Hero';
 import InvitationMessage from './sections/InvitationMessage';
+import Interlude from './sections/Interlude';
 import CinematicLighting from './components/CinematicLighting';
 import ColorGrading from './components/ColorGrading';
 import PaperTexture from './components/PaperTexture';
+import DepthLayers from './components/DepthLayers';
 import LoadingScreen from './components/LoadingScreen';
 import OpeningVeil from './components/OpeningVeil';
 import AmbientAudio from './components/AmbientAudio';
@@ -17,9 +19,11 @@ const RSVP = lazy(() => import('./sections/RSVP'));
 const FinalBlessing = lazy(() => import('./sections/FinalBlessing'));
 
 /**
- * Entry sequence: LoadingScreen → OpeningVeil → page.
- * Lenis is paused while the veil is closed so wheel/touch events
- * don't accumulate behind the curtain.
+ * Cinematic sequence:
+ *   LoadingScreen → OpeningVeil → page (Lenis active)
+ *
+ * Interlude sections are deliberate breaths between content moments,
+ * giving the journey ebb and flow rather than constant activity.
  */
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -36,6 +40,7 @@ export default function App() {
   return (
     <>
       <CinematicLighting />
+      <DepthLayers />
       <ColorGrading />
       <PaperTexture />
 
@@ -45,15 +50,28 @@ export default function App() {
       <main className="relative bg-ivory text-ink">
         <Hero />
         <InvitationMessage />
+
+        <Interlude>
+          Hay días que el cielo guarda silencio para escuchar.
+        </Interlude>
+
         <Suspense fallback={<div className="h-[50vh]" />}>
           <Gallery />
           <EventDetails />
+
+          <Interlude>
+            La fe se enciende en los gestos pequeños.
+          </Interlude>
+
           <Location />
           <Family />
           <RSVP />
           <FinalBlessing />
         </Suspense>
-        <footer className="relative py-12 text-center">
+
+        <footer className="relative py-12 text-center"
+          style={{ paddingBottom: 'calc(3rem + env(safe-area-inset-bottom))' }}
+        >
           <p className="eyebrow text-[0.55rem] text-ink/40">
             Hecho con amor · MMXXVI
           </p>

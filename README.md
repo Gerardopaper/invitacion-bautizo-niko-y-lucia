@@ -66,6 +66,23 @@ La experiencia se compone en capas que viven encima del contenido:
 - **AmbientAudio** — toggle minimal en la esquina; nunca autoplay. Carga `public/audio/ambience.mp3` (no incluido). Cualquier loop sutil de catedral, coro distante, aire o campanas funciona — apunta a ≈ -24 dBFS. Si el archivo no existe, el botón simplemente no reproduce nada.
 - **Mobile parallax** — `useMouseParallax` detecta `pointer: coarse` y usa giroscopio (`deviceorientation`) en móvil, con fallback a touchmove.
 
+## Compartir / Social Preview
+
+El archivo `public/og-image.svg` es la composición editorial 1200×630 que se usa como Open Graph. Algunas plataformas (WhatsApp, iMessage, FB) prefieren PNG/JPG; exporta una vez:
+
+```bash
+# usando rsvg-convert (mac/linux: brew install librsvg / apt install librsvg2-bin)
+rsvg-convert -w 1200 -h 630 public/og-image.svg -o public/og-image.png
+
+# o con ImageMagick / Inkscape / Figma, exporta a public/og-image.png (1200×630).
+```
+
+`index.html` ya apunta a `./og-image.png`. Si solo subes el SVG, cambia la ruta a `./og-image.svg`.
+
+Iconos incluidos:
+- `public/favicon.svg` — favicon vectorial (browser tab).
+- `public/apple-touch-icon.svg` — icono de pantalla de inicio iOS.
+
 ## Notas de diseño
 
 - Paleta: marfil, blanco cálido, champagne, perla, oro tenue.

@@ -50,7 +50,22 @@ html.lenis body {
 .font-display {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 300;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1, 'calt' 1, 'onum' 1;
+  text-wrap: balance;
+}
+
+/* Hero display kerning — extra optical breathing room on large set */
+.hero-display {
+  letter-spacing: -0.022em;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1, 'calt' 1, 'onum' 1;
+}
+
+.balance {
+  text-wrap: balance;
+}
+.pretty {
+  text-wrap: pretty;
 }
 
 .italic-display {
@@ -131,10 +146,23 @@ html.lenis body {
   border: 1px solid rgba(168, 138, 79, 0.18);
 }
 
-/* Section spacing */
+/* Section spacing — fluid, breathing room scales with viewport */
 .section {
   position: relative;
-  padding: clamp(6rem, 12vw, 11rem) clamp(1.25rem, 4vw, 3rem);
+  padding-top: clamp(7rem, 14vw, 12rem);
+  padding-bottom: clamp(7rem, 14vw, 12rem);
+  padding-left: max(clamp(1.25rem, 4vw, 3rem), env(safe-area-inset-left));
+  padding-right: max(clamp(1.25rem, 4vw, 3rem), env(safe-area-inset-right));
+}
+
+/* Safe-area aware viewport heights */
+.h-svh {
+  height: 100svh;
+  height: 100dvh;
+}
+.min-h-svh {
+  min-height: 100svh;
+  min-height: 100dvh;
 }
 
 /* Premium WhatsApp button */
@@ -248,6 +276,23 @@ html.lenis body {
 @media (max-width: 768px) {
   .editorial-image img {
     transition: transform 2s cubic-bezier(0.16, 0.84, 0.24, 1);
+  }
+  /* iOS Safari: kill tap highlights, optimize touch */
+  a, button, .btn-luxe {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  /* Slightly tighter heading rhythm on tiny screens */
+  .font-display {
+    letter-spacing: -0.008em;
+  }
+}
+
+/* Coarse pointer specific: ensure adequate hit targets */
+@media (pointer: coarse) {
+  .btn-luxe {
+    padding: 1.15rem 2rem;
+    min-height: 52px;
   }
 }
 

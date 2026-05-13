@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
 import SectionFrame from '../components/SectionFrame';
-import Divider from '../components/Divider';
 import { fadeUp, stagger } from '../animations/variants';
 
+/**
+ * Asymmetric editorial composition.
+ * Eyebrow + verse sit left-aligned on the margin; the main statement
+ * occupies the right column with luxurious whitespace.
+ */
 export default function InvitationMessage() {
   return (
     <SectionFrame id="invitation" lightVariant="mid">
@@ -10,37 +14,36 @@ export default function InvitationMessage() {
         variants={stagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: '-15%' }}
-        className="flex flex-col items-center text-center"
+        viewport={{ once: true, margin: '-12%' }}
+        className="grid grid-cols-12 gap-y-12 sm:gap-y-0 sm:gap-x-10"
       >
-        <motion.div variants={fadeUp}>
-          <Divider label="La Invitación" />
+        <motion.div
+          variants={fadeUp}
+          className="col-span-12 sm:col-span-4 sm:pt-3"
+        >
+          <span className="eyebrow">La Invitación</span>
+          <span className="gold-divider mt-6 block" style={{ width: 48 }} />
+          <p className="italic-display mt-10 text-xl sm:text-2xl text-ink/55 leading-snug balance">
+            “Dejad que los niños vengan a mí.”
+          </p>
+          <p className="eyebrow mt-5 text-mutedgold">Mateo 19:14</p>
         </motion.div>
 
-        <motion.h2
+        <motion.div
           variants={fadeUp}
-          className="font-display mt-10 text-[clamp(2.4rem,6vw,4.6rem)] leading-[1.05] text-ink max-w-3xl"
+          className="col-span-12 sm:col-span-8 sm:pl-4"
         >
-          Hay momentos que el alma{' '}
-          <span className="italic-display gold-text">recuerda para siempre.</span>
-        </motion.h2>
+          <h2 className="font-display text-[clamp(2.4rem,6.5vw,5rem)] leading-[1.02] text-ink balance">
+            Hay momentos que el alma
+            <span className="italic-display gold-text"> recuerda para siempre.</span>
+          </h2>
 
-        <motion.p
-          variants={fadeUp}
-          className="mt-10 max-w-xl text-base sm:text-lg leading-relaxed text-ink/70 font-light"
-        >
-          Será un honor compartir contigo el día en que nuestros pequeños reciban
-          el sacramento del bautismo —un instante íntimo, sagrado y luminoso,
-          tejido entre familia, fe y agradecimiento.
-        </motion.p>
-
-        <motion.p
-          variants={fadeUp}
-          className="italic-display mt-10 text-xl sm:text-2xl text-ink/55"
-        >
-          “Dejad que los niños vengan a mí.”
-          <span className="block eyebrow mt-4 text-mutedgold">Mateo 19:14</span>
-        </motion.p>
+          <p className="mt-10 max-w-xl text-base sm:text-lg leading-[1.85] text-ink/70 font-light pretty">
+            Será un honor compartir contigo el día en que nuestros pequeños
+            reciban el sacramento del bautismo —un instante íntimo, sagrado y
+            luminoso, tejido entre familia, fe y agradecimiento.
+          </p>
+        </motion.div>
       </motion.div>
     </SectionFrame>
   );

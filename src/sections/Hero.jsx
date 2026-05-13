@@ -47,7 +47,11 @@ export default function Hero() {
     <section
       ref={ref}
       id="hero"
-      className="relative h-[100svh] min-h-[640px] w-full overflow-hidden"
+      className="relative h-svh min-h-[640px] w-full overflow-hidden"
+      style={{
+        paddingTop: 'env(safe-area-inset-top)',
+        paddingBottom: 'env(safe-area-inset-bottom)',
+      }}
     >
       <AmbientLight variant="top" />
       <ParticleBackground density={32} />
@@ -87,9 +91,9 @@ export default function Hero() {
 
           <GlowingCross size={44} className="mt-10" />
 
-          <h1 className="font-display mt-10 text-[clamp(3.6rem,11vw,9rem)] leading-[0.95] text-ink">
+          <h1 className="hero-display font-display mt-10 text-[clamp(3.4rem,11vw,9rem)] leading-[0.92] text-ink">
             <HeroName text={a} />
-            <span className="block italic-display text-ink/55 text-[0.42em] tracking-[0.36em] my-3 sm:my-5">
+            <span className="block italic-display text-ink/45 text-[0.34em] tracking-[0.5em] my-4 sm:my-6">
               &amp;
             </span>
             <HeroName text={b} />

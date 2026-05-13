@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import SectionFrame from '../components/SectionFrame';
 import GlowingCross from '../components/GlowingCross';
 import ParticleBackground from '../components/ParticleBackground';
+import AscendingLight from '../components/AscendingLight';
 import { fadeUp, stagger } from '../animations/variants';
 import { event } from '../config/event';
 
@@ -13,6 +14,7 @@ export default function FinalBlessing() {
       <div className="absolute inset-0 -z-0 pointer-events-none">
         <ParticleBackground density={22} />
       </div>
+      <AscendingLight />
 
       <motion.div
         variants={stagger}

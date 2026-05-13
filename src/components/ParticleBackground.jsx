@@ -8,6 +8,11 @@ import { loadSlim } from '@tsparticles/slim';
  */
 export default function ParticleBackground({ density = 28 }) {
   const [ready, setReady] = useState(false);
+  // Mobile/GPU-constrained devices receive a quieter sky
+  const isCoarse =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(pointer: coarse)').matches;
+  const effectiveDensity = isCoarse ? Math.round(density * 0.55) : density;
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -22,7 +27,7 @@ export default function ParticleBackground({ density = 28 }) {
       fpsLimit: 60,
       detectRetina: true,
       particles: {
-        number: { value: density, density: { enable: true, area: 1100 } },
+        number: { value: effectiveDensity, density: { enable: true, area: 1100 } },
         color: { value: ['#D8C29A', '#EFE7D8', '#FBF8F2'] },
         shape: { type: 'circle' },
         opacity: {
@@ -53,7 +58,7 @@ export default function ParticleBackground({ density = 28 }) {
         events: { onHover: { enable: false }, onClick: { enable: false } },
       },
     }),
-    [density]
+    [effectiveDensity]
   );
 
   if (!ready) return null;
