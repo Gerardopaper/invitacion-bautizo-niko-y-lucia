@@ -24,7 +24,9 @@ export default function AmbientAudio({ active = true }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const a = new Audio('./audio/ambience.mp3');
+    // Resolve against Vite's configured base URL so the file loads
+    // correctly whether we're at "/" or at "/invitacion-bautizo-niko-y-lucia/"
+    const a = new Audio(`${import.meta.env.BASE_URL}audio/ambience.mp3`);
     a.loop = true;
     a.preload = 'auto';
     a.volume = 0;
