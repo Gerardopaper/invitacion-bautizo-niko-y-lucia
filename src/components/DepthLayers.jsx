@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import useCoarsePointer from '../hooks/useCoarsePointer';
 
 /**
  * Three parallax depth layers that establish atmospheric dimensionality
@@ -22,6 +23,14 @@ const DUST = [
 ];
 
 export default function DepthLayers() {
+  const coarse = useCoarsePointer();
+  // Mobile: 3 motes instead of 6. Concurrent infinite animations are
+  // a major cause of stutter during scroll; halving them is invisible.
+  const motes = coarse ? DUST.filter((_, i) => i % 2 === 0) : DUST;
+  // Mobile: drop the foreground dust scroll-parallax binding (kept
+  // for desktop). The drifting Y on each mote is the work that
+  // matters; the layer-level Y just doubles cost without showing.
+
   const scroll = useMotionValue(0);
   const smooth = useSpring(scroll, { stiffness: 40, damping: 26, mass: 0.9 });
 
@@ -55,7 +64,7 @@ export default function DepthLayers() {
           y: distantY,
           background:
             'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(216,194,154,0.18) 0%, rgba(216,194,154,0) 70%)',
-          filter: 'blur(20px)',
+          filter: coarse ? 'blur(10px)' : 'blur(20px)',
         }}
       />
       {/* Mid — cathedral haze */}
@@ -65,12 +74,15 @@ export default function DepthLayers() {
           y: midY,
           background:
             'radial-gradient(ellipse 60% 50% at 60% 40%, rgba(239,231,216,0.35) 0%, rgba(239,231,216,0) 70%)',
-          filter: 'blur(28px)',
+          filter: coarse ? 'blur(14px)' : 'blur(28px)',
         }}
       />
       {/* Foreground — slow drifting dust motes */}
-      <motion.div className="absolute inset-0" style={{ y: dustY }}>
-        {DUST.map((d, i) => (
+      <motion.div
+        className="absolute inset-0"
+        style={coarse ? undefined : { y: dustY }}
+      >
+        {motes.map((d, i) => (
           <motion.span
             key={i}
             className="absolute rounded-full"

@@ -27,24 +27,32 @@ export const event = {
   },
 };
 
+// Unsplash params:
+//   fm=webp   → modern format (≈30–40% smaller than jpeg at equal quality)
+//   q=72      → near-indistinguishable visual quality, much smaller bytes
+//   w=900     → display size; mobile cards never exceed ~440 CSS px
+//   fit=crop  → centered crop, predictable composition
+const u = (id) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&fm=webp&w=900&q=72`;
+
 export const galleryImages = [
   {
-    src: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1200&q=80',
+    src: u('photo-1519689680058-324335c77eba'),
     alt: 'Manos sosteniendo a un recién nacido',
     aspect: 'aspect-[3/4]',
   },
   {
-    src: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=1200&q=80',
+    src: u('photo-1555252333-9f8e92e65df9'),
     alt: 'Bebé envuelto en lino claro',
     aspect: 'aspect-[4/5]',
   },
   {
-    src: 'https://images.unsplash.com/photo-1544126592-807ade215a0b?auto=format&fit=crop&w=1200&q=80',
+    src: u('photo-1544126592-807ade215a0b'),
     alt: 'Detalle de pies de bebé',
     aspect: 'aspect-[4/5]',
   },
   {
-    src: 'https://images.unsplash.com/photo-1546015720-b8b30df5aa27?auto=format&fit=crop&w=1200&q=80',
+    src: u('photo-1546015720-b8b30df5aa27'),
     alt: 'Bebé dormido en blanco',
     aspect: 'aspect-[3/4]',
   },

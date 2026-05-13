@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import SectionFrame from '../components/SectionFrame';
+import useCoarsePointer from '../hooks/useCoarsePointer';
 import { galleryImages } from '../config/event';
 import { EASE_CINE, EASE_SOFT } from '../animations/variants';
 
@@ -15,37 +16,52 @@ import { EASE_CINE, EASE_SOFT } from '../animations/variants';
  * scale at the container level. The photo never feels like a placed
  * rectangle — it feels suspended in the same light as the page.
  */
-function EditorialPhotograph({ image, index }) {
+function EditorialPhotograph({ image, index, coarse }) {
   const ref = useRef(null);
   const reduce = useReducedMotion();
+  // Skip the useScroll subscription entirely on mobile — every active
+  // useScroll adds a scroll listener and per-frame work. Worth avoiding.
+  const enableParallax = !coarse && !reduce;
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: enableParallax ? ref : { current: null },
     offset: ['start end', 'end start'],
   });
-  // Alternate direction & soften range for editorial drift
   const plateY = useTransform(
     scrollYProgress,
     [0, 1],
-    reduce ? ['0%', '0%'] : index % 2 === 0 ? ['6%', '-6%'] : ['-4%', '4%']
+    enableParallax
+      ? index % 2 === 0
+        ? ['6%', '-6%']
+        : ['-4%', '4%']
+      : ['0%', '0%']
   );
+
+  // Lighter entrance reveal on mobile (no blur — animated blur is
+  // the single most expensive filter on mobile GPUs).
+  const initial = coarse
+    ? { opacity: 0, y: 28 }
+    : { opacity: 0, y: 56, filter: 'blur(14px)' };
+  const whileInView = coarse
+    ? { opacity: 1, y: 0 }
+    : { opacity: 1, y: 0, filter: 'blur(0px)' };
 
   return (
     <motion.figure
       ref={ref}
-      initial={{ opacity: 0, y: 56, filter: 'blur(14px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      initial={initial}
+      whileInView={whileInView}
       viewport={{ once: true, margin: '-12%' }}
       transition={{
-        duration: 2.2,
+        duration: coarse ? 1.2 : 2.2,
         ease: EASE_CINE,
-        delay: index * 0.12,
+        delay: index * (coarse ? 0.05 : 0.12),
       }}
       className={`editorial-image ${image.aspect} relative w-full`}
     >
-      <div className="editorial-image__veil" />
+      {!coarse && <div className="editorial-image__veil" />}
       <motion.div
         className="editorial-image__plate"
-        style={{ y: plateY }}
+        style={enableParallax ? { y: plateY } : undefined}
         transition={{ ease: EASE_SOFT }}
       >
         <img
@@ -53,14 +69,18 @@ function EditorialPhotograph({ image, index }) {
           alt={image.alt}
           loading="lazy"
           decoding="async"
+          // Gallery images are never above-the-fold; deprioritize.
+          fetchpriority="low"
+          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 600px"
         />
-        <div className="editorial-image__bloom" />
+        {!coarse && <div className="editorial-image__bloom" />}
       </motion.div>
     </motion.figure>
   );
 }
 
 export default function Gallery() {
+  const coarse = useCoarsePointer();
   return (
     <SectionFrame id="gallery" lightVariant="mid">
       <div className="grid grid-cols-12 gap-y-10 sm:gap-y-0 sm:gap-x-10">
@@ -92,7 +112,7 @@ export default function Gallery() {
                     : ''
                 }
               >
-                <EditorialPhotograph image={image} index={i} />
+                <EditorialPhotograph image={image} index={i} coarse={coarse} />
               </div>
             ))}
           </div>

@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import useCoarsePointer from '../hooks/useCoarsePointer';
 
 export default function GlowingCross({ size = 56, className = '' }) {
+  const coarse = useCoarsePointer();
   return (
     <motion.div
       className={`relative inline-flex items-center justify-center ${className}`}
@@ -14,9 +16,14 @@ export default function GlowingCross({ size = 56, className = '' }) {
         style={{
           background:
             'radial-gradient(circle, rgba(216,194,154,0.55) 0%, rgba(216,194,154,0) 70%)',
+          opacity: coarse ? 0.75 : undefined,
         }}
-        animate={{ opacity: [0.5, 0.9, 0.5], scale: [1, 1.08, 1] }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        animate={coarse ? undefined : { opacity: [0.5, 0.9, 0.5], scale: [1, 1.08, 1] }}
+        transition={
+          coarse
+            ? undefined
+            : { duration: 5, repeat: Infinity, ease: 'easeInOut' }
+        }
       />
       <svg
         viewBox="0 0 24 36"

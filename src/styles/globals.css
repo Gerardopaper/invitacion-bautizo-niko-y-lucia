@@ -405,36 +405,77 @@ html.lenis body {
     letter-spacing: -0.008em;
     line-height: 1.06;
   }
-  /* Body type more readable / less wide */
   body {
     -webkit-font-smoothing: antialiased;
   }
-  /* Soften feathered mask further on small screens
-     so edges remain dreamlike at narrow widths */
-  .editorial-image__plate {
-    -webkit-mask-image: radial-gradient(
-      ellipse 90% 92% at 50% 50%,
-      #000 50%,
-      rgba(0, 0, 0, 0.9) 68%,
-      rgba(0, 0, 0, 0.45) 85%,
-      transparent 100%
-    );
-    mask-image: radial-gradient(
-      ellipse 90% 92% at 50% 50%,
-      #000 50%,
-      rgba(0, 0, 0, 0.9) 68%,
-      rgba(0, 0, 0, 0.45) 85%,
-      transparent 100%
-    );
-  }
-  /* Gentler image-section vertical offsets so cadence still reads
-     elegant on tall narrow viewports */
-  .editorial-image {
-    animation-duration: 16s;
-  }
-  /* Reduce eyebrow letter-spacing creep on tiny widths */
   .eyebrow {
     letter-spacing: 0.32em;
+  }
+}
+
+/* ─── Mobile performance pass ──────────────────────────────────────
+   On coarse-pointer devices (phones, most tablets) we strip the most
+   GPU-expensive parts of the editorial image system:
+
+     • the radial mask (masking forces an offscreen pass per repaint)
+     • the soft-light bloom layer (blend-mode + radial gradient)
+     • the inner light-wrap ::after (one more compositing layer)
+     • the 24px blurred atmospheric veil (huge fill-rate cost)
+     • the breathing scale animation (constant repaint per image)
+
+   In exchange we add lightweight equivalents: tiny radius, soft box
+   shadow as faux halo, single consolidated filter. Edges still feel
+   feathered through the warm shadow; images still feel graded.
+   Result: gallery scrolling stays buttery on mid-range Android.
+─────────────────────────────────────────────────────────────────── */
+@media (pointer: coarse) {
+  .editorial-image {
+    animation: none;
+    border-radius: 4px;
+    box-shadow:
+      0 0 0 1px rgba(216, 194, 154, 0.18),
+      0 30px 60px -35px rgba(75, 55, 30, 0.28),
+      0 0 60px -10px rgba(216, 194, 154, 0.22);
+  }
+  .editorial-image__plate {
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-radius: 4px;
+  }
+  .editorial-image__plate::after {
+    /* Single restrained vignette only — drop the highlight wrap */
+    background: radial-gradient(
+      ellipse 100% 100% at 50% 100%,
+      rgba(75, 55, 30, 0.18) 0%,
+      transparent 60%
+    );
+  }
+  .editorial-image__bloom { display: none; }
+  .editorial-image__veil { display: none; }
+  /* Consolidated, cheaper grade. Drop the transition (filter
+     animation is the costliest part of a filter chain). */
+  .editorial-image__plate img {
+    filter: brightness(1.03) contrast(0.93) saturate(0.86) sepia(0.06);
+    transition: transform 1.6s cubic-bezier(0.16, 0.84, 0.24, 1);
+  }
+  .editorial-image:hover .editorial-image__plate img {
+    /* Phones don't really hover; remove filter change to avoid
+       expensive repaint when momentum-scroll briefly hovers. */
+    filter: brightness(1.03) contrast(0.93) saturate(0.86) sepia(0.06);
+    transform: none;
+  }
+
+  /* Reduce backdrop-filter cost on glass cards. Replace 14px blur
+     with a slightly stronger translucent fill — visually similar,
+     repaint cost ~1/3. */
+  .glass-card {
+    backdrop-filter: blur(6px) saturate(110%);
+    -webkit-backdrop-filter: blur(6px) saturate(110%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 253, 248, 0.78) 0%,
+      rgba(247, 242, 233, 0.68) 100%
+    );
   }
 }
 

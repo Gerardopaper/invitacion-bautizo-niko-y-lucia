@@ -2,10 +2,12 @@ import { motion } from 'framer-motion';
 import { MessageCircle, ArrowUpRight } from 'lucide-react';
 import SectionFrame from '../components/SectionFrame';
 import Divider from '../components/Divider';
+import useCoarsePointer from '../hooks/useCoarsePointer';
 import { fadeUp, stagger } from '../animations/variants';
 import { event } from '../config/event';
 
 export default function RSVP() {
+  const coarse = useCoarsePointer();
   const waLink = `https://wa.me/${event.whatsapp.phone}?text=${encodeURIComponent(
     event.whatsapp.message
   )}`;
@@ -45,8 +47,13 @@ export default function RSVP() {
           <motion.span
             aria-hidden
             className="absolute -inset-6 rounded-full bg-radial-warm"
-            animate={{ opacity: [0.5, 0.85, 0.5], scale: [1, 1.06, 1] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            style={coarse ? { opacity: 0.7 } : undefined}
+            animate={coarse ? undefined : { opacity: [0.5, 0.85, 0.5], scale: [1, 1.06, 1] }}
+            transition={
+              coarse
+                ? undefined
+                : { duration: 5, repeat: Infinity, ease: 'easeInOut' }
+            }
           />
           <a
             href={waLink}
