@@ -30,12 +30,25 @@ export default function ParticleBackground({ density = 28 }) {
         number: { value: effectiveDensity, density: { enable: true, area: 1100 } },
         color: { value: ['#D8C29A', '#EFE7D8', '#FBF8F2'] },
         shape: { type: 'circle' },
+        // Slightly more present, still translucent. Floor lifted so even
+        // the dimmest motes are readable against ivory; ceiling raised
+        // so the brightest read as gentle highlights, not dust.
         opacity: {
-          value: { min: 0.08, max: 0.45 },
-          animation: { enable: true, speed: 0.25, sync: false },
+          value: { min: 0.22, max: 0.7 },
+          animation: { enable: true, speed: 0.3, sync: false },
         },
+        // A touch larger overall — keeps the cathedral-air scale
+        // but lets the eye actually find them.
         size: {
-          value: { min: 0.6, max: 2.4 },
+          value: { min: 0.9, max: 3.2 },
+        },
+        // Soft warm glow around each particle so they read as light,
+        // not points. Cheap because tsParticles draws this in canvas.
+        shadow: {
+          enable: true,
+          color: '#F4E5C2',
+          blur: 6,
+          offset: { x: 0, y: 0 },
         },
         move: {
           enable: true,
@@ -48,9 +61,10 @@ export default function ParticleBackground({ density = 28 }) {
         twinkle: {
           particles: {
             enable: true,
-            color: '#FBF8F2',
-            frequency: 0.025,
-            opacity: 0.85,
+            color: '#FFF6E0',
+            // Slightly more frequent twinkle so the field feels alive
+            frequency: 0.05,
+            opacity: 1,
           },
         },
       },
