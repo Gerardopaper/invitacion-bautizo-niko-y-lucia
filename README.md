@@ -54,6 +54,18 @@ npm run deploy
 
 `gh-pages` publicará la carpeta `dist/` en la rama `gh-pages`. En la configuración del repositorio activa GitHub Pages apuntando a esa rama.
 
+## Atmósfera & secuencia cinematográfica
+
+La experiencia se compone en capas que viven encima del contenido:
+
+- **LoadingScreen** — cruz dorada respirando sobre marfil; disuelve cuando las fuentes y el primer paint terminan.
+- **OpeningVeil** — “Abrir la invitación”. Dos mitades se separan como un velo de seda; el scroll (Lenis) está pausado hasta entonces.
+- **CinematicLighting** — tres haloes volumétricos a nivel global que respiran y se desplazan suavemente con el scroll (“luz de catedral cambiando con el día”).
+- **ColorGrading** — wash cálido global (soft-light + vignette muy tenue), inspirado en cinematografía Malick / editorial.
+- **PaperTexture** — dos capas: fibras de papel + grano fílmico, ambas casi imperceptibles, para profundidad táctil.
+- **AmbientAudio** — toggle minimal en la esquina; nunca autoplay. Carga `public/audio/ambience.mp3` (no incluido). Cualquier loop sutil de catedral, coro distante, aire o campanas funciona — apunta a ≈ -24 dBFS. Si el archivo no existe, el botón simplemente no reproduce nada.
+- **Mobile parallax** — `useMouseParallax` detecta `pointer: coarse` y usa giroscopio (`deviceorientation`) en móvil, con fallback a touchmove.
+
 ## Notas de diseño
 
 - Paleta: marfil, blanco cálido, champagne, perla, oro tenue.

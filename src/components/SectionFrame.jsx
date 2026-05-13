@@ -17,7 +17,6 @@ const SectionFrame = forwardRef(function SectionFrame(
     >
       <AmbientLight variant={lightVariant} />
       {withVeil && <div className="cathedral-veil" />}
-      <div className="grain" />
       <div className="relative z-10 mx-auto max-w-6xl">{children}</div>
     </section>
   );

@@ -52,7 +52,6 @@ export default function Hero() {
       <AmbientLight variant="top" />
       <ParticleBackground density={32} />
       <div className="cathedral-veil" />
-      <div className="grain" />
 
       <motion.div
         style={{ y, opacity, scale }}

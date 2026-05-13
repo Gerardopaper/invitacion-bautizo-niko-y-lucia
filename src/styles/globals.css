@@ -221,6 +221,36 @@ html.lenis body {
   height: 0;
 }
 
+/* Tactile press response — kinetic depth on mobile tap */
+.tap-depth {
+  transition:
+    transform 0.7s cubic-bezier(0.16, 0.84, 0.24, 1),
+    box-shadow 0.7s cubic-bezier(0.16, 0.84, 0.24, 1),
+    filter 0.7s cubic-bezier(0.16, 0.84, 0.24, 1);
+  will-change: transform;
+}
+.tap-depth:active {
+  transform: translateY(1px) scale(0.992);
+  filter: brightness(0.985);
+}
+
+/* Floating ambient drift for layered tiles on mobile */
+@keyframes drift-soft {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -6px, 0); }
+}
+.drift-soft {
+  animation: drift-soft 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Improve image rendering on mobile */
+@media (max-width: 768px) {
+  .editorial-image img {
+    transition: transform 2s cubic-bezier(0.16, 0.84, 0.24, 1);
+  }
+}
+
 /* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   *,

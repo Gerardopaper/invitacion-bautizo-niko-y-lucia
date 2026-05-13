@@ -1,17 +1,23 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
-export default function useLenis() {
+/**
+ * Cinematic smooth scroll. When `paused` is true (e.g. during opening veil),
+ * the instance is destroyed and scroll restored to native so wheel/touch
+ * events don't accumulate.
+ */
+export default function useLenis(paused = false) {
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
+    if (prefersReduced || paused) return;
 
     const lenis = new Lenis({
-      duration: 1.4,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.6,
+      easing: (t) => 1 - Math.pow(1 - t, 4), // ease-out quart
       smoothWheel: true,
       smoothTouch: false,
-      touchMultiplier: 1.2,
+      touchMultiplier: 1.1,
+      wheelMultiplier: 0.95,
     });
 
     let rafId;
@@ -25,5 +31,5 @@ export default function useLenis() {
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };
-  }, []);
+  }, [paused]);
 }
