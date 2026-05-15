@@ -31,8 +31,12 @@ export default function ColorGrading() {
         style={{
           mixBlendMode: 'multiply',
           opacity: 0.18,
+          // Edge vignette leans olive-brown rather than pure sepia, so
+          // shadows across the whole composition (photos included)
+          // carry a restrained olive undertone. Highlights stay warm
+          // ivory via the soft-light wash above.
           background:
-            'radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(75,55,30,0.35) 100%)',
+            'radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(56,56,36,0.34) 100%)',
         }}
       />
     </div>

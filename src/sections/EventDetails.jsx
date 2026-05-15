@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Calendar, Clock, Church, MapPin, GlassWater } from 'lucide-react';
+import { Calendar, Clock, MapPin } from 'lucide-react';
 import SectionFrame from '../components/SectionFrame';
 import Divider from '../components/Divider';
 import CountdownTimer from '../components/CountdownTimer';
@@ -14,23 +14,13 @@ const items = [
   },
   {
     icon: Clock,
-    label: 'Ceremonia',
+    label: 'Hora',
     value: event.timeLabel,
   },
   {
-    icon: Church,
-    label: 'Iglesia',
-    value: event.church.name,
-  },
-  {
     icon: MapPin,
-    label: 'Dirección',
-    value: event.church.address,
-  },
-  {
-    icon: GlassWater,
-    label: 'Recepción',
-    value: `${event.reception.name} · ${event.reception.timeLabel}`,
+    label: 'Lugar',
+    value: event.venue.name,
   },
 ];
 
@@ -45,13 +35,13 @@ export default function EventDetails() {
         className="flex flex-col items-center text-center"
       >
         <motion.div variants={fadeUp}>
-          <Divider label="Detalles del Día" />
+          <Divider label="La Celebración" />
         </motion.div>
         <motion.h2
           variants={fadeUp}
           className="font-display mt-10 text-[clamp(2.2rem,5.5vw,4rem)] leading-[1.05] text-ink max-w-2xl"
         >
-          Una mañana <span className="italic-display gold-text">para recordar.</span>
+          Una tarde <span className="italic-display gold-text">para celebrarlos.</span>
         </motion.h2>
 
         <motion.div variants={fadeUp} className="mt-14 w-full">
@@ -64,7 +54,7 @@ export default function EventDetails() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-10%' }}
-        className="mt-20 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        className="mx-auto mt-20 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-3"
       >
         {items.map(({ icon: Icon, label, value }, i) => (
           <motion.div

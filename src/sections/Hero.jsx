@@ -69,7 +69,7 @@ export default function Hero() {
             transition={{ duration: 1.6, delay: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
             className="eyebrow"
           >
-            Sacramento del Bautismo
+            Celebración de Bautizo
           </motion.p>
 
           <motion.div

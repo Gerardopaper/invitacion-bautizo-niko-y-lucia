@@ -20,15 +20,16 @@ export default function Location() {
         </motion.div>
         <motion.h2
           variants={fadeUp}
-          className="font-display mt-10 text-[clamp(2.2rem,5.5vw,4rem)] leading-[1.05] text-ink max-w-2xl"
+          className="font-display mt-10 text-[clamp(2.2rem,5.5vw,4rem)] leading-[1.05] text-ink max-w-2xl balance"
         >
-          {event.church.name}
+          {event.venue.name}
         </motion.h2>
         <motion.p
           variants={fadeUp}
-          className="mt-4 text-sm tracking-[0.2em] uppercase text-ink/55"
+          className="mt-5 max-w-md text-base sm:text-lg leading-[1.85] text-ink/60 font-light pretty"
         >
-          {event.church.address}
+          Aquí nos reuniremos para celebrar a Lucia y Niko —entre familia,
+          mantel largo y la calma de una tarde compartida.
         </motion.p>
       </motion.div>
 
@@ -42,8 +43,8 @@ export default function Location() {
         <div className="glass-card overflow-hidden p-2 sm:p-3">
           <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2px]">
             <iframe
-              title="Mapa de la iglesia"
-              src={event.church.embedUrl}
+              title="Mapa del salón de fiestas Centenario"
+              src={event.venue.embedUrl}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="absolute inset-0 h-full w-full grayscale-[35%] contrast-[0.95] saturate-[0.85]"
@@ -56,13 +57,13 @@ export default function Location() {
 
         <div className="mt-10 flex justify-center">
           <a
-            href={event.church.mapsUrl}
+            href={event.venue.mapsUrl}
             target="_blank"
             rel="noreferrer"
             className="btn-luxe group"
           >
             <MapPin size={16} strokeWidth={1.2} />
-            <span>Abrir en Google Maps</span>
+            <span>Cómo llegar</span>
             <ArrowUpRight
               size={16}
               strokeWidth={1.2}

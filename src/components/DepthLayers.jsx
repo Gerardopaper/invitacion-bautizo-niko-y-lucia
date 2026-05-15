@@ -67,13 +67,14 @@ export default function DepthLayers() {
           filter: coarse ? 'blur(10px)' : 'blur(20px)',
         }}
       />
-      {/* Mid — cathedral haze */}
+      {/* Mid — cathedral haze, with a barely-there olive undertone
+          so the depth between layers feels organic, not just warm. */}
       <motion.div
         className="absolute -inset-x-[5%] top-[30%] h-[70%]"
         style={{
           y: midY,
           background:
-            'radial-gradient(ellipse 60% 50% at 60% 40%, rgba(239,231,216,0.35) 0%, rgba(239,231,216,0) 70%)',
+            'radial-gradient(ellipse 60% 50% at 60% 40%, rgba(239,231,216,0.32) 0%, rgba(160,158,120,0.12) 45%, rgba(239,231,216,0) 72%)',
           filter: coarse ? 'blur(14px)' : 'blur(28px)',
         }}
       />

@@ -103,7 +103,9 @@ export default function CinematicLighting() {
             : { duration: 17, repeat: Infinity, ease: 'easeInOut' }
         }
       />
-      {/* Third halo: desktop only — phones already have enough warmth. */}
+      {/* Third halo: desktop only. This is the lone olive-tinted
+          light — a grounding, low anchor glow that gives the
+          atmosphere subtle organic depth without reading green. */}
       {!coarse && (
         <motion.div
           className="absolute"
@@ -115,7 +117,7 @@ export default function CinematicLighting() {
             translateX: '-50%',
             translateY: '-50%',
             background:
-              'radial-gradient(circle, rgba(216,194,154,0.32) 0%, rgba(216,194,154,0.1) 30%, rgba(251,248,242,0) 65%)',
+              'radial-gradient(circle, rgba(130,128,90,0.26) 0%, rgba(130,128,90,0.09) 32%, rgba(251,248,242,0) 66%)',
             filter: `blur(${blurC}px)`,
           }}
           animate={{ opacity: [0.4, 0.65, 0.4], scale: [1, 1.06, 1] }}

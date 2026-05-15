@@ -34,14 +34,15 @@ export default function InvitationMessage() {
           className="col-span-12 sm:col-span-8 sm:pl-4"
         >
           <h2 className="font-display text-[clamp(2.4rem,6.5vw,5rem)] leading-[1.02] text-ink balance">
-            Hay momentos que el alma
-            <span className="italic-display gold-text"> recuerda para siempre.</span>
+            La gracia ya fue dada;
+            <span className="italic-display gold-text"> ahora la celebramos.</span>
           </h2>
 
           <p className="mt-10 max-w-xl text-base sm:text-lg leading-[1.85] text-ink/70 font-light pretty">
-            Será un honor compartir contigo el día en que nuestros pequeños
-            reciban el sacramento del bautismo —un instante íntimo, sagrado y
-            luminoso, tejido entre familia, fe y agradecimiento.
+            El agua del bautismo ya se derramó sobre Lucia y Niko. Lo que
+            sigue es la parte que se comparte: una tarde para reunirnos,
+            agradecer y guardar juntos —entre los nuestros— este recuerdo
+            luminoso.
           </p>
         </motion.div>
       </motion.div>

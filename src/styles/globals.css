@@ -10,6 +10,13 @@
   --champagne-deep: #B89A66;
   --pearl: #EFE7D8;
   --muted-gold: #A88A4F;
+  /* Restrained luxury olive — discovered gradually, never dominant */
+  --olive: #82805A;
+  --olive-deep: #686748;
+  --olive-mist: #9C9A78;
+  /* Olive-leaning shadow tint, replaces the old pure-sepia shadow.
+     Lets every vignette/glow lean subtly olive instead of brown. */
+  --shadow-olive: 58, 57, 36;
   --ink: #2B2417;
 }
 
@@ -86,10 +93,14 @@ html.lenis body {
 .gold-divider {
   height: 1px;
   width: 80px;
+  /* Gold core that fades out through a whisper of olive at both
+     ends — like a champagne ribbon tied with olive silk. */
   background: linear-gradient(
     90deg,
     transparent 0%,
+    rgba(104, 103, 72, 0.25) 22%,
     rgba(168, 138, 79, 0.7) 50%,
+    rgba(104, 103, 72, 0.25) 78%,
     transparent 100%
   );
 }
@@ -136,9 +147,10 @@ html.lenis body {
   );
   backdrop-filter: blur(14px) saturate(120%);
   -webkit-backdrop-filter: blur(14px) saturate(120%);
-  border: 1px solid rgba(216, 194, 154, 0.35);
+  border: 1px solid rgba(216, 194, 154, 0.34);
   box-shadow:
-    0 30px 80px -45px rgba(75, 55, 30, 0.25),
+    0 30px 80px -45px rgba(var(--shadow-olive), 0.26),
+    inset 0 0 0 1px rgba(130, 128, 90, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
@@ -194,7 +206,8 @@ html.lenis body {
   background: linear-gradient(
     120deg,
     transparent 30%,
-    rgba(216, 194, 154, 0.45) 50%,
+    rgba(216, 194, 154, 0.42) 48%,
+    rgba(130, 128, 90, 0.16) 57%,
     transparent 70%
   );
   transform: translateX(-120%);
@@ -203,11 +216,13 @@ html.lenis body {
 }
 .btn-luxe:hover {
   transform: translateY(-2px);
+  /* Border + ring lean toward olive on hover; the broad glow stays
+     warm champagne so it never reads as a "green button". */
   box-shadow:
-    0 30px 80px -30px rgba(168, 138, 79, 0.45),
-    0 0 0 1px rgba(168, 138, 79, 0.4),
-    0 0 60px rgba(216, 194, 154, 0.25);
-  border-color: rgba(168, 138, 79, 0.85);
+    0 30px 80px -30px rgba(104, 103, 72, 0.42),
+    0 0 0 1px rgba(130, 128, 90, 0.42),
+    0 0 60px rgba(216, 194, 154, 0.22);
+  border-color: rgba(130, 128, 90, 0.7);
 }
 .btn-luxe:hover::before {
   transform: translateX(120%);
@@ -321,7 +336,7 @@ html.lenis body {
     ),
     radial-gradient(
       ellipse 100% 100% at 50% 100%,
-      rgba(75, 55, 30, 0.18) 0%,
+      rgba(var(--shadow-olive), 0.2) 0%,
       transparent 55%
     );
 }
@@ -335,9 +350,9 @@ html.lenis body {
   background:
     radial-gradient(
       ellipse 65% 60% at 50% 50%,
-      rgba(216, 194, 154, 0.22) 0%,
-      rgba(239, 231, 216, 0.12) 45%,
-      rgba(251, 248, 242, 0) 75%
+      rgba(216, 194, 154, 0.2) 0%,
+      rgba(150, 148, 108, 0.1) 50%,
+      rgba(251, 248, 242, 0) 78%
     );
   filter: blur(24px);
 }
@@ -433,9 +448,9 @@ html.lenis body {
     animation: none;
     border-radius: 4px;
     box-shadow:
-      0 0 0 1px rgba(216, 194, 154, 0.18),
-      0 30px 60px -35px rgba(75, 55, 30, 0.28),
-      0 0 60px -10px rgba(216, 194, 154, 0.22);
+      0 0 0 1px rgba(150, 148, 108, 0.18),
+      0 30px 60px -35px rgba(var(--shadow-olive), 0.3),
+      0 0 60px -10px rgba(216, 194, 154, 0.2);
   }
   .editorial-image__plate {
     -webkit-mask-image: none;
@@ -446,7 +461,7 @@ html.lenis body {
     /* Single restrained vignette only — drop the highlight wrap */
     background: radial-gradient(
       ellipse 100% 100% at 50% 100%,
-      rgba(75, 55, 30, 0.18) 0%,
+      rgba(var(--shadow-olive), 0.2) 0%,
       transparent 60%
     );
   }

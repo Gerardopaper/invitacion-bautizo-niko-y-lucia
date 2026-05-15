@@ -1,4 +1,4 @@
-# Invitación de Bautismo — Sofía & Mateo
+# Celebración de Bautizo — Lucia & Niko
 
 Una experiencia digital sagrada, editorial y cinematográfica. Construida con React + Vite, TailwindCSS, Framer Motion, GSAP, Lenis, tsParticles y Lucide.
 
@@ -34,10 +34,10 @@ Toda la información editable vive en [`src/config/event.js`](src/config/event.j
 
 - Nombres de los bebés
 - Fecha y hora
-- Iglesia, dirección, mapa
-- Padres, padrinos
+- Salón / venue, enlace y mapa de ubicación
+- Padrinos
 - Número de WhatsApp y mensaje pre-cargado
-- Galería (URLs de imágenes)
+- Retratos (`public/images/lucia.webp`, `niko.webp`)
 
 Las imágenes son placeholders de Unsplash; reemplaza los `src` por las fotos reales cuando estén listas (manteniendo proporción 3:4 o 4:5 para conservar la composición editorial).
 

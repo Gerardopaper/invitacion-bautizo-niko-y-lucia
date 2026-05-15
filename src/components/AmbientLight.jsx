@@ -37,9 +37,11 @@ export default function AmbientLight({ variant = 'top' }) {
           [0.35, 0.55, 0.35],
           11
         )}
+        {/* One olive-tinted halo per section — grounding warmth,
+            discovered rather than announced. */}
         {halo(
-          { width: 480, height: 480, top: '40%', left: -160, background: 'rgba(247,242,233,0.7)' },
-          [0.35, 0.55, 0.35],
+          { width: 480, height: 480, top: '40%', left: -160, background: 'rgba(140,138,98,0.5)' },
+          [0.3, 0.48, 0.3],
           13
         )}
       </div>
@@ -54,8 +56,8 @@ export default function AmbientLight({ variant = 'top' }) {
         12
       )}
       {halo(
-        { width: 420, height: 420, top: '60%', left: '10%', background: 'rgba(239,231,216,0.6)' },
-        [0.35, 0.55, 0.35],
+        { width: 420, height: 420, top: '60%', left: '10%', background: 'rgba(150,148,108,0.42)' },
+        [0.3, 0.48, 0.3],
         10
       )}
     </div>

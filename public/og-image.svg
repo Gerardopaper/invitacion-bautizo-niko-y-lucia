@@ -29,15 +29,17 @@
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect width="1200" height="630" fill="url(#halo)"/>
 
-  <!-- Inner hairline frame -->
+  <!-- Inner hairline frame: champagne with a finer olive frame just
+       inside it — a restrained "olive silk" detail. -->
   <rect x="44" y="44" width="1112" height="542" fill="none" stroke="url(#gold)" stroke-opacity="0.45" stroke-width="1"/>
+  <rect x="54" y="54" width="1092" height="522" fill="none" stroke="#82805A" stroke-opacity="0.28" stroke-width="1"/>
 
   <!-- Eyebrow -->
   <text x="600" y="166" text-anchor="middle"
         font-family="Inter, Helvetica, Arial, sans-serif"
         font-size="20" letter-spacing="9"
         fill="#A88A4F" font-weight="500">
-    SACRAMENTO DEL BAUTISMO
+    CELEBRACIÓN DE BAUTIZO
   </text>
 
   <!-- Gold rule -->
@@ -55,14 +57,14 @@
         font-family="Cormorant Garamond, Georgia, serif"
         font-size="118" font-weight="300" letter-spacing="-1"
         fill="#2B2417">
-    Sofía <tspan font-style="italic" fill="#7a6a52" font-size="64" dy="-12">&amp;</tspan> Mateo
+    Lucia <tspan font-style="italic" fill="#7a6a52" font-size="64" dy="-12">&amp;</tspan> Niko
   </text>
 
   <!-- Subline -->
   <text x="600" y="500" text-anchor="middle"
         font-family="Inter, Helvetica, Arial, sans-serif"
         font-size="18" letter-spacing="9" fill="#5a4d36">
-    12 · SEPTIEMBRE · 2026
+    13 · JUNIO · 2026
   </text>
 
   <!-- Subtle paper grain on top -->

@@ -11,8 +11,13 @@ export default {
         pearl: '#EFE7D8',
         beige: '#E8DFCC',
         mutedgold: '#A88A4F',
+        // Restrained luxury olive — muted, desaturated, "olive silk".
+        // An accent and a shadow undertone, never a fill.
+        olive: '#82805A',
+        oliveDeep: '#686748',
+        oliveMist: '#9C9A78',
         ink: '#2B2417',
-        shadowwarm: 'rgba(75, 55, 30, 0.08)',
+        shadowwarm: 'rgba(58, 57, 36, 0.08)',
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
@@ -27,6 +32,8 @@ export default {
           'radial-gradient(circle at 50% 40%, rgba(216,194,154,0.18) 0%, rgba(251,248,242,0) 60%)',
         'radial-pearl':
           'radial-gradient(circle at 50% 50%, rgba(239,231,216,0.55) 0%, rgba(251,248,242,0) 70%)',
+        'radial-olive':
+          'radial-gradient(circle at 50% 50%, rgba(130,128,90,0.14) 0%, rgba(251,248,242,0) 68%)',
         'gold-line':
           'linear-gradient(90deg, transparent 0%, rgba(168,138,79,0.55) 50%, transparent 100%)',
       },

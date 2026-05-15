@@ -2,28 +2,24 @@
 // Replace placeholder values with real ones when ready.
 
 export const event = {
-  babies: ['Sofía', 'Mateo'],
-  date: new Date('2026-09-12T12:00:00-06:00'),
-  dateLabel: '12 · Septiembre · 2026',
-  timeLabel: '12:00 h',
-  church: {
-    name: 'Catedral de Nuestra Señora',
-    address: 'Plaza de la Constitución 1, Centro Histórico',
-    mapsUrl: 'https://maps.google.com/?q=Catedral+Metropolitana+CDMX',
+  babies: ['Lucia', 'Niko'],
+  // El bautismo (ceremonia religiosa) ya se celebró; esta es la
+  // reunión familiar posterior. 13 de junio, 3:00 PM (zona Querétaro).
+  date: new Date('2026-06-13T15:00:00-06:00'),
+  dateLabel: '13 · Junio · 2026',
+  timeLabel: '3:00 PM',
+  venue: {
+    name: 'Salón de fiestas Centenario',
+    mapsUrl: 'https://maps.app.goo.gl/KsAHEsS5YaHpRTqd6',
+    // Embed sin API key, centrado en las coordenadas del salón
     embedUrl:
-      'https://www.google.com/maps?q=Catedral+Metropolitana+CDMX&output=embed',
+      'https://www.google.com/maps?q=20.49220635066738,-100.13782641937057&z=16&output=embed',
   },
-  reception: {
-    name: 'Salón Casa Veluna',
-    address: 'Av. de los Olivos 240, Lomas Verdes',
-    timeLabel: '14:30 h',
-  },
-  parents: ['Isabella & Andrés Castaño'],
-  godparents: ['Lucía Montenegro & Tomás Vergara'],
+  godparents: ['Mayra Carol Palma Perrusquia', 'Jorge Luis Botello González'],
   whatsapp: {
     phone: '525555555555', // formato internacional, sin signos
     message:
-      '✦ Confirmo mi presencia al bautismo de Sofía & Mateo. Con cariño,',
+      '✦ Con cariño, confirmamos nuestra presencia en la celebración de Lucia & Niko.',
   },
 };
 
@@ -33,10 +29,10 @@ const img = (file) => `${import.meta.env.BASE_URL}images/${file}`;
 
 export const portraits = [
   {
-    name: 'Lucía',
+    name: 'Lucia',
     eyebrow: 'La niña',
     src: img('lucia.webp'),
-    alt: 'Retrato de Lucía',
+    alt: 'Retrato de Lucia',
     aspect: 'aspect-[4/5]',
     verse: 'Tejida en silencio, nombrada en la luz.',
     side: 'left',
