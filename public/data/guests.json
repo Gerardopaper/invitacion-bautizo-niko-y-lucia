@@ -126,5 +126,11 @@
     "gid": "21",
     "family_name": "Familia Resendiz Botello",
     "reserved_spots": 2
+  },
+  {
+    "gid": "12",
+    "family_name": "Familia Gonzalez Hudson",
+    "reserved_spots": 2,
+    "guests": ["Julio", "Ariadna"]
   }
 ]
