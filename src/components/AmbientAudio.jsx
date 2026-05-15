@@ -109,7 +109,7 @@ export default function AmbientAudio({ active = true }) {
               <VolumeX size={14} strokeWidth={1.2} />
             )}
             <span className="eyebrow text-[0.55rem] text-ink/65">
-              {enabled ? 'Atmósfera' : 'Sonido'}
+              {enabled ? 'Atmósfera' : 'Silencio'}
             </span>
           </span>
         </motion.button>

@@ -28,14 +28,13 @@ export default function RSVP() {
           variants={fadeUp}
           className="font-display mt-10 text-[clamp(2.2rem,5.5vw,4rem)] leading-[1.05] text-ink max-w-2xl"
         >
-          Tu presencia será nuestro <span className="italic-display gold-text">mayor regalo.</span>
+          Nos encantará compartir <span className="italic-display gold-text">este día contigo.</span>
         </motion.h2>
         <motion.p
           variants={fadeUp}
           className="mt-8 max-w-xl text-base sm:text-lg leading-relaxed text-ink/65 font-light"
         >
-          Te pedimos confirmar tu asistencia para preparar con cariño cada
-          detalle de la celebración.
+          Confírmanos si podrás acompañarnos.
         </motion.p>
 
         <motion.div

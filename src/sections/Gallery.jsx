@@ -102,22 +102,18 @@ function PortraitMoment({ portrait, index, coarse }) {
           : 'sm:items-end sm:text-right'
       } items-center text-center`}
     >
-      <span className="eyebrow">{portrait.eyebrow}</span>
       <motion.h3
         style={enableParallax ? { y: nameY } : undefined}
-        className="font-display mt-6 text-[clamp(3rem,9vw,6.5rem)] leading-[0.95] text-ink"
+        className="font-display text-[clamp(3rem,9vw,6.5rem)] leading-[0.95] text-ink"
       >
         {portrait.name}
       </motion.h3>
       <span
-        className={`gold-divider mt-7 block ${
+        className={`gold-divider mt-8 block ${
           portrait.side === 'right' ? 'sm:ml-auto' : ''
         }`}
         style={{ width: 56 }}
       />
-      <p className="italic-display mt-7 max-w-xs text-lg sm:text-xl leading-relaxed text-ink/55 balance">
-        {portrait.verse}
-      </p>
     </motion.div>
   );
 
@@ -152,12 +148,10 @@ export default function Gallery() {
         <span className="eyebrow">Retratos</span>
         <span className="gold-divider mx-auto mt-6 block" style={{ width: 56 }} />
         <h2 className="font-display mt-8 text-[clamp(2.2rem,5.5vw,4rem)] leading-[1.05] text-ink balance">
-          Dos pequeñas almas,{' '}
-          <span className="italic-display gold-text">una misma luz.</span>
+          Lucia <span className="italic-display gold-text">&amp;</span> Niko
         </h2>
         <p className="mx-auto mt-8 max-w-md text-sm sm:text-base leading-[1.85] text-ink/60 font-light pretty">
-          No son fotografías: son los primeros instantes de una historia que
-          hoy ponemos en manos de Dios.
+          Dos retratos de estos días, para mirar con calma.
         </p>
       </motion.div>
 

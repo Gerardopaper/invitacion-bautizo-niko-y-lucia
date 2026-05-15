@@ -39,10 +39,9 @@ export default function InvitationMessage() {
           </h2>
 
           <p className="mt-10 max-w-xl text-base sm:text-lg leading-[1.85] text-ink/70 font-light pretty">
-            El agua del bautismo ya se derramó sobre Lucia y Niko. Lo que
-            sigue es la parte que se comparte: una tarde para reunirnos,
-            agradecer y guardar juntos —entre los nuestros— este recuerdo
-            luminoso.
+            El bautizo de Lucia y Niko ya se celebró en familia. Ahora
+            queremos compartir esa alegría contigo: una tarde para estar
+            juntos, con calma y sin prisa.
           </p>
         </motion.div>
       </motion.div>

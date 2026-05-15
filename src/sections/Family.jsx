@@ -20,12 +20,11 @@ export default function Family() {
         <motion.div variants={fadeUp} className="col-span-12 sm:col-span-5">
           <span className="eyebrow">Padrinos</span>
           <h2 className="font-display mt-6 text-[clamp(2rem,5vw,3.6rem)] leading-[1.05] text-ink balance">
-            Quienes los acompañan{' '}
-            <span className="italic-display gold-text">en la fe.</span>
+            Quienes los <span className="italic-display gold-text">acompañan.</span>
           </h2>
           <p className="mt-7 max-w-sm text-sm sm:text-base leading-[1.85] text-ink/60 font-light pretty">
-            Manos elegidas para guiar, cuidar y rezar por ellos a lo largo
-            del camino.
+            Las personas que estarán cerca para cuidarlos y quererlos
+            siempre.
           </p>
         </motion.div>
 

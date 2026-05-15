@@ -76,7 +76,7 @@ export default function OpeningVeil({ open, onOpen }) {
                 transition={{ duration: 1.6, ease: EASE_CINE, delay: 0.5 }}
                 className="eyebrow"
               >
-                Una invitación sagrada
+                Una celebración para recordar
               </motion.span>
 
               <motion.div
@@ -119,15 +119,6 @@ export default function OpeningVeil({ open, onOpen }) {
               >
                 <span>Abrir la invitación</span>
               </motion.button>
-
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.55 }}
-                transition={{ duration: 1.6, ease: 'easeOut', delay: 2.4 }}
-                className="eyebrow mt-8 text-[0.55rem] text-ink/45"
-              >
-                Toca para comenzar
-              </motion.span>
             </div>
           </motion.div>
         </motion.div>

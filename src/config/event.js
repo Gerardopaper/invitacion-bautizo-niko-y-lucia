@@ -30,20 +30,16 @@ const img = (file) => `${import.meta.env.BASE_URL}images/${file}`;
 export const portraits = [
   {
     name: 'Lucia',
-    eyebrow: 'La niña',
     src: img('lucia.webp'),
     alt: 'Retrato de Lucia',
     aspect: 'aspect-[4/5]',
-    verse: 'Tejida en silencio, nombrada en la luz.',
     side: 'left',
   },
   {
     name: 'Niko',
-    eyebrow: 'El niño',
     src: img('niko.webp'),
     alt: 'Retrato de Niko',
     aspect: 'aspect-[4/5]',
-    verse: 'Un pequeño cielo aprendiendo a respirar.',
     side: 'right',
   },
 ];

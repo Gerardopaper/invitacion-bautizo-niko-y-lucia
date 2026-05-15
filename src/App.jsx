@@ -52,7 +52,7 @@ export default function App() {
         <InvitationMessage />
 
         <Interlude>
-          Hay días que el cielo guarda silencio para escuchar.
+          Hay momentos que merecen quedarse para siempre.
         </Interlude>
 
         <Suspense fallback={<div className="h-[50vh]" />}>
@@ -60,7 +60,7 @@ export default function App() {
           <EventDetails />
 
           <Interlude>
-            La fe se enciende en los gestos pequeños.
+            Lo más importante siempre se comparte.
           </Interlude>
 
           <Location />
@@ -73,7 +73,7 @@ export default function App() {
           style={{ paddingBottom: 'calc(3rem + env(safe-area-inset-bottom))' }}
         >
           <p className="eyebrow text-[0.55rem] text-ink/40">
-            Hecho con amor · MMXXVI
+            Lucia &amp; Niko
           </p>
         </footer>
       </main>
