@@ -150,9 +150,6 @@ export default function Gallery() {
         <h2 className="font-display mt-8 text-[clamp(2.2rem,5.5vw,4rem)] leading-[1.05] text-ink balance">
           Lucia <span className="italic-display gold-text">&amp;</span> Niko
         </h2>
-        <p className="mx-auto mt-8 max-w-md text-sm sm:text-base leading-[1.85] text-ink/60 font-light pretty">
-          Dos retratos de estos días, para mirar con calma.
-        </p>
       </motion.div>
 
       {/* Two cinematic portrait moments */}

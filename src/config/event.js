@@ -17,9 +17,9 @@ export const event = {
   },
   godparents: ['Mayra Carol Palma Perrusquia', 'Jorge Luis Botello González'],
   whatsapp: {
-    phone: '525555555555', // formato internacional, sin signos
+    phone: '525621170314', // formato internacional, sin signos
     message:
-      '✦ Con cariño, confirmamos nuestra presencia en la celebración de Lucia & Niko.',
+      'Confirmamos nuestra presencia en la celebración de Lucia & Niko.',
   },
 };
 

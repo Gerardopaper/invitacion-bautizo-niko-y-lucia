@@ -28,8 +28,7 @@ export default function Location() {
           variants={fadeUp}
           className="mt-5 max-w-md text-base sm:text-lg leading-[1.85] text-ink/60 font-light pretty"
         >
-          Aquí nos reuniremos para celebrar a Lucia y Niko, en familia y
-          sin prisa.
+          Aquí nos reuniremos para celebrar
         </motion.p>
       </motion.div>
 

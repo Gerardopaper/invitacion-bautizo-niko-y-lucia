@@ -34,14 +34,12 @@ export default function InvitationMessage() {
           className="col-span-12 sm:col-span-8 sm:pl-4"
         >
           <h2 className="font-display text-[clamp(2.4rem,6.5vw,5rem)] leading-[1.02] text-ink balance">
-            La gracia ya fue dada;
+            La gracia fue dada;
             <span className="italic-display gold-text"> ahora la celebramos.</span>
           </h2>
 
           <p className="mt-10 max-w-xl text-base sm:text-lg leading-[1.85] text-ink/70 font-light pretty">
-            El bautizo de Lucia y Niko ya se celebró en familia. Ahora
-            queremos compartir esa alegría contigo: una tarde para estar
-            juntos, con calma y sin prisa.
+            Queremos compartir esa alegría contigo
           </p>
         </motion.div>
       </motion.div>
