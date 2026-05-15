@@ -21,7 +21,18 @@ let guestsPromise = null;
 
 function loadGuests() {
   if (!guestsPromise) {
-    guestsPromise = fetch(`${import.meta.env.BASE_URL}data/guests.json`)
+    // The guest list changes between deploys, but it's a static file
+    // on GitHub Pages — Android Chrome / the WhatsApp in-app browser
+    // will happily serve a stale cached copy and show the wrong
+    // family. A per-load timestamp query + `no-store` defeats both
+    // the browser HTTP cache and any intermediary proxy cache so the
+    // freshest list is always fetched. The file is a few KB, so
+    // skipping the cache costs nothing.
+    const bust = `?t=${Date.now()}`;
+    guestsPromise = fetch(
+      `${import.meta.env.BASE_URL}data/guests.json${bust}`,
+      { cache: 'no-store' }
+    )
       .then((r) => (r.ok ? r.json() : []))
       .catch(() => []);
   }
