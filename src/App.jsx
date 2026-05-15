@@ -14,6 +14,7 @@ import AmbientAudio from './components/AmbientAudio';
 const Gallery = lazy(() => import('./sections/Gallery'));
 const EventDetails = lazy(() => import('./sections/EventDetails'));
 const Location = lazy(() => import('./sections/Location'));
+const Parents = lazy(() => import('./sections/Parents'));
 const Family = lazy(() => import('./sections/Family'));
 const RSVP = lazy(() => import('./sections/RSVP'));
 const FinalBlessing = lazy(() => import('./sections/FinalBlessing'));
@@ -64,6 +65,7 @@ export default function App() {
           </Interlude>
 
           <Location />
+          <Parents />
           <Family />
           <RSVP />
           <FinalBlessing />
@@ -73,7 +75,7 @@ export default function App() {
           style={{ paddingBottom: 'calc(3rem + env(safe-area-inset-bottom))' }}
         >
           <p className="eyebrow text-[0.55rem] text-ink/40">
-            Lucia &amp; Niko
+            Gracias por acompañarnos
           </p>
         </footer>
       </main>

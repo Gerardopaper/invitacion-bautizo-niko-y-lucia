@@ -15,6 +15,7 @@ export const event = {
     embedUrl:
       'https://www.google.com/maps?q=20.49220635066738,-100.13782641937057&z=16&output=embed',
   },
+  parents: ['Lucerito Botello González', 'Gerardo Palma Perrusquia'],
   godparents: ['Mayra Carol Palma Perrusquia', 'Jorge Luis Botello González'],
   whatsapp: {
     phone: '525621170314', // formato internacional, sin signos
