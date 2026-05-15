@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import SectionFrame from '../components/SectionFrame';
 import GlowingCross from '../components/GlowingCross';
 import ParticleBackground from '../components/ParticleBackground';
@@ -8,11 +9,14 @@ import { event } from '../config/event';
 
 export default function FinalBlessing() {
   const [a, b] = event.babies;
+  // The particle canvas only renders while this closing section is
+  // near the viewport — no second canvas running for the whole scroll.
+  const { ref, inView } = useInView({ rootMargin: '300px 0px', threshold: 0 });
 
   return (
     <SectionFrame id="blessing" lightVariant="top" className="!py-[18vh]">
-      <div className="absolute inset-0 -z-0 pointer-events-none">
-        <ParticleBackground density={22} />
+      <div ref={ref} className="absolute inset-0 -z-0 pointer-events-none">
+        {inView && <ParticleBackground density={22} />}
       </div>
       <AscendingLight />
 
@@ -37,7 +41,7 @@ export default function FinalBlessing() {
 
         <motion.span
           variants={fadeUp}
-          className="eyebrow mt-6 text-mutedgold"
+          className="eyebrow mt-6 text-mutedgoldDeep"
         >
           Números 6:24–26
         </motion.span>
@@ -57,7 +61,7 @@ export default function FinalBlessing() {
 
         <motion.p
           variants={fadeUp}
-          className="mt-8 text-xs sm:text-sm tracking-[0.36em] uppercase text-ink/45"
+          className="mt-8 text-xs sm:text-sm tracking-[0.32em] uppercase text-ink/75"
         >
           Con amor · {event.dateLabel}
         </motion.p>

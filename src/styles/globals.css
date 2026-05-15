@@ -10,6 +10,10 @@
   --champagne-deep: #B89A66;
   --pearl: #EFE7D8;
   --muted-gold: #A88A4F;
+  /* Deep bronze for small informational text — same warm family as
+     the champagne accents but ~6.7:1 on ivory (AA pass at any size),
+     where #A88A4F was only ~3.1:1 and failed for small labels. */
+  --accent-deep: #6B5526;
   /* Restrained luxury olive — discovered gradually, never dominant */
   --olive: #82805A;
   --olive-deep: #686748;
@@ -83,11 +87,11 @@ html.lenis body {
 
 .eyebrow {
   font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.36em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--muted-gold);
+  color: var(--accent-deep);
 }
 
 .gold-divider {
@@ -424,7 +428,7 @@ html.lenis body {
     -webkit-font-smoothing: antialiased;
   }
   .eyebrow {
-    letter-spacing: 0.32em;
+    letter-spacing: 0.22em;
   }
 }
 

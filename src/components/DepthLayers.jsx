@@ -14,12 +14,12 @@ import useCoarsePointer from '../hooks/useCoarsePointer';
  * separation while staying restrained. All elements respect reduced-motion.
  */
 const DUST = [
-  { x: '12%', size: 5, delay: 0, dur: 22, opacity: 0.45 },
-  { x: '28%', size: 3, delay: 4, dur: 28, opacity: 0.35 },
-  { x: '47%', size: 4, delay: 8, dur: 26, opacity: 0.4 },
-  { x: '64%', size: 3, delay: 2, dur: 30, opacity: 0.3 },
-  { x: '82%', size: 5, delay: 6, dur: 24, opacity: 0.5 },
-  { x: '92%', size: 3, delay: 10, dur: 28, opacity: 0.35 },
+  { x: '12%', size: 5, delay: 0, dur: 22, opacity: 0.62 },
+  { x: '28%', size: 3, delay: 4, dur: 28, opacity: 0.5 },
+  { x: '47%', size: 4, delay: 8, dur: 26, opacity: 0.56 },
+  { x: '64%', size: 3, delay: 2, dur: 30, opacity: 0.44 },
+  { x: '82%', size: 5, delay: 6, dur: 24, opacity: 0.68 },
+  { x: '92%', size: 3, delay: 10, dur: 28, opacity: 0.5 },
 ];
 
 export default function DepthLayers() {
@@ -63,7 +63,7 @@ export default function DepthLayers() {
         style={{
           y: distantY,
           background:
-            'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(216,194,154,0.18) 0%, rgba(216,194,154,0) 70%)',
+            'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(216,194,154,0.26) 0%, rgba(216,194,154,0) 70%)',
           filter: coarse ? 'blur(10px)' : 'blur(20px)',
         }}
       />
@@ -74,7 +74,7 @@ export default function DepthLayers() {
         style={{
           y: midY,
           background:
-            'radial-gradient(ellipse 60% 50% at 60% 40%, rgba(239,231,216,0.32) 0%, rgba(160,158,120,0.12) 45%, rgba(239,231,216,0) 72%)',
+            'radial-gradient(ellipse 60% 50% at 60% 40%, rgba(239,231,216,0.44) 0%, rgba(160,158,120,0.17) 45%, rgba(239,231,216,0) 72%)',
           filter: coarse ? 'blur(14px)' : 'blur(28px)',
         }}
       />

@@ -12,7 +12,7 @@ export default function ParticleBackground({ density = 28 }) {
   const isCoarse =
     typeof window !== 'undefined' &&
     window.matchMedia('(pointer: coarse)').matches;
-  const effectiveDensity = isCoarse ? Math.round(density * 0.55) : density;
+  const effectiveDensity = isCoarse ? Math.round(density * 0.72) : density;
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -28,26 +28,29 @@ export default function ParticleBackground({ density = 28 }) {
       detectRetina: true,
       particles: {
         number: { value: effectiveDensity, density: { enable: true, area: 1100 } },
-        color: { value: ['#D8C29A', '#EFE7D8', '#FBF8F2'] },
+        // Dropped the near-ivory white (it vanished against the
+        // background) for deeper champagne tones — more contrast,
+        // still warm and elegant, kinder to low-vision guests.
+        color: { value: ['#C9AE78', '#D8C29A', '#E7D6B0'] },
         shape: { type: 'circle' },
-        // Slightly more present, still translucent. Floor lifted so even
-        // the dimmest motes are readable against ivory; ceiling raised
-        // so the brightest read as gentle highlights, not dust.
+        // More present and readable. Floor raised so even the dimmest
+        // motes register; ceiling near-solid so the brightest read
+        // clearly as points of light without looking like confetti.
         opacity: {
-          value: { min: 0.22, max: 0.7 },
+          value: { min: 0.42, max: 0.95 },
           animation: { enable: true, speed: 0.3, sync: false },
         },
-        // A touch larger overall — keeps the cathedral-air scale
-        // but lets the eye actually find them.
+        // Larger overall so they're easy to find, while the slow
+        // drift keeps the cathedral-air feeling intact.
         size: {
-          value: { min: 0.9, max: 3.2 },
+          value: { min: 1.4, max: 4.4 },
         },
-        // Soft warm glow around each particle so they read as light,
-        // not points. Cheap because tsParticles draws this in canvas.
+        // Stronger warm halo so each mote reads as glowing light
+        // rather than a faint dot — improves perceptibility.
         shadow: {
           enable: true,
-          color: '#F4E5C2',
-          blur: 6,
+          color: '#EAD6A4',
+          blur: 9,
           offset: { x: 0, y: 0 },
         },
         move: {
@@ -61,9 +64,10 @@ export default function ParticleBackground({ density = 28 }) {
         twinkle: {
           particles: {
             enable: true,
-            color: '#FFF6E0',
-            // Slightly more frequent twinkle so the field feels alive
-            frequency: 0.05,
+            color: '#FFF1CF',
+            // A little more twinkle so the field stays alive and
+            // catches a wandering eye, without becoming sparkly.
+            frequency: 0.07,
             opacity: 1,
           },
         },

@@ -1,11 +1,27 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import gsap from 'gsap';
 import ParticleBackground from '../components/ParticleBackground';
 import AmbientLight from '../components/AmbientLight';
 import GlowingCross from '../components/GlowingCross';
 import useMouseParallax from '../hooks/useMouseParallax';
 import { event } from '../config/event';
+
+// Letter-by-letter reveal — Framer Motion variants replace the old
+// GSAP timeline so GSAP can leave the bundle entirely. Same feel:
+// a long expo-style ease, 0.06s stagger, beginning 1.2s after mount.
+const nameContainer = {
+  hidden: {},
+  show: { transition: { delayChildren: 1.2, staggerChildren: 0.06 } },
+};
+const letterReveal = {
+  hidden: { y: '110%', opacity: 0, filter: 'blur(10px)' },
+  show: {
+    y: '0%',
+    opacity: 1,
+    filter: 'blur(0px)',
+    transition: { duration: 1.6, ease: [0.16, 0.84, 0.24, 1] },
+  },
+};
 
 export default function Hero() {
   const ref = useRef(null);
@@ -20,26 +36,6 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
 
   const parallax = useMouseParallax(10);
-
-  // GSAP letter-by-letter reveal for the names
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.hero-letter',
-        { yPercent: 110, opacity: 0, filter: 'blur(10px)' },
-        {
-          yPercent: 0,
-          opacity: 1,
-          filter: 'blur(0px)',
-          duration: 1.6,
-          ease: 'expo.out',
-          stagger: 0.06,
-          delay: 1.2,
-        }
-      );
-    }, ref);
-    return () => ctx.revert();
-  }, []);
 
   const [a, b] = event.babies;
 
@@ -91,19 +87,24 @@ Bautizo
 
           <GlowingCross size={44} className="mt-10" />
 
-          <h1 className="hero-display font-display mt-10 text-[clamp(3.4rem,11vw,9rem)] leading-[0.92] text-ink">
+          <motion.h1
+            variants={nameContainer}
+            initial="hidden"
+            animate="show"
+            className="hero-display font-display mt-10 text-[clamp(3.4rem,11vw,9rem)] leading-[0.92] text-ink"
+          >
             <HeroName text={a} />
             <span className="block italic-display text-ink/45 text-[0.34em] tracking-[0.5em] my-4 sm:my-6">
               &amp;
             </span>
             <HeroName text={b} />
-          </h1>
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 2.8, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-12 max-w-md text-xs sm:text-sm tracking-[0.3em] uppercase text-ink/55"
+            className="mt-12 max-w-md text-xs sm:text-sm tracking-[0.3em] uppercase text-ink/75"
           >
             {event.dateLabel}
           </motion.p>
@@ -117,7 +118,7 @@ Bautizo
         transition={{ delay: 3.4, duration: 1.2 }}
         className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-center"
       >
-        <span className="eyebrow text-[0.55rem]">Desliza</span>
+        <span className="eyebrow text-[0.66rem]">Desliza</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
@@ -133,12 +134,13 @@ function HeroName({ text }) {
     <span className="block overflow-hidden">
       <span className="inline-block">
         {text.split('').map((ch, i) => (
-          <span
+          <motion.span
             key={`${ch}-${i}`}
-            className="hero-letter inline-block will-change-transform"
+            variants={letterReveal}
+            className="inline-block"
           >
             {ch === ' ' ? ' ' : ch}
-          </span>
+          </motion.span>
         ))}
       </span>
     </span>

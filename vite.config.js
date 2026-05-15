@@ -10,7 +10,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          motion: ['framer-motion', 'gsap'],
+          motion: ['framer-motion'],
           particles: ['@tsparticles/engine', '@tsparticles/react', '@tsparticles/slim'],
         },
       },

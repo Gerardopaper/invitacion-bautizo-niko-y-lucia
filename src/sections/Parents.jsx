@@ -28,7 +28,7 @@ export default function Parents() {
           <h2 className="font-display mt-7 text-[clamp(2rem,4.6vw,3.2rem)] leading-[1.12] text-ink balance">
             Esta alegría <span className="italic-display gold-text">empieza en casa.</span>
           </h2>
-          <p className="mt-6 text-base sm:text-lg leading-[1.85] text-ink/60 font-light pretty">
+          <p className="mt-6 text-base sm:text-lg leading-[1.85] text-ink/75 font-light pretty">
             Y hoy queremos compartirla contigo.
           </p>
         </motion.div>

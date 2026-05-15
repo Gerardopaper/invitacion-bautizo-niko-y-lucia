@@ -3,13 +3,21 @@ import { MessageCircle, ArrowUpRight } from 'lucide-react';
 import SectionFrame from '../components/SectionFrame';
 import Divider from '../components/Divider';
 import useCoarsePointer from '../hooks/useCoarsePointer';
+import useGuest from '../hooks/useGuest';
 import { fadeUp, stagger } from '../animations/variants';
 import { event } from '../config/event';
 
 export default function RSVP() {
   const coarse = useCoarsePointer();
+  const { status, guest } = useGuest();
+  const personalized = status === 'found' && guest;
+
+  // Guest-aware prefilled message — warm, never transactional.
+  const waMessage = personalized
+    ? `Hola, somos ${guest.family_name}. Confirmamos nuestra presencia en la celebración de Lucia & Niko.`
+    : event.whatsapp.message;
   const waLink = `https://wa.me/${event.whatsapp.phone}?text=${encodeURIComponent(
-    event.whatsapp.message
+    waMessage
   )}`;
 
   return (
@@ -34,7 +42,9 @@ export default function RSVP() {
           variants={fadeUp}
           className="mt-8 max-w-xl text-base sm:text-lg leading-relaxed text-ink/65 font-light"
         >
-          Confírmanos si podrás acompañarnos.
+          {personalized
+            ? 'Confírmanos si podrán acompañarnos.'
+            : 'Confírmanos si podrás acompañarnos.'}
         </motion.p>
 
         <motion.div
@@ -72,7 +82,7 @@ export default function RSVP() {
 
         <motion.p
           variants={fadeUp}
-          className="mt-10 text-xs tracking-[0.32em] uppercase text-ink/45"
+          className="mt-10 text-xs tracking-[0.28em] uppercase text-ink/75"
         >
           Antes del {event.dateLabel}
         </motion.p>

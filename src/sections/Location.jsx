@@ -26,7 +26,7 @@ export default function Location() {
         </motion.h2>
         <motion.p
           variants={fadeUp}
-          className="mt-5 max-w-md text-base sm:text-lg leading-[1.85] text-ink/60 font-light pretty"
+          className="mt-5 max-w-md text-base sm:text-lg leading-[1.85] text-ink/75 font-light pretty"
         >
           Aquí nos reuniremos para celebrar
         </motion.p>

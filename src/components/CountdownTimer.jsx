@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 function diff(targetDate) {
   const total = Math.max(0, targetDate.getTime() - Date.now());
@@ -12,11 +13,16 @@ function diff(targetDate) {
 
 export default function CountdownTimer({ targetDate }) {
   const [time, setTime] = useState(() => diff(targetDate));
+  const { ref, inView } = useInView({ rootMargin: '120px 0px', threshold: 0 });
 
+  // Only tick (and re-render every second) while the timer is on
+  // screen. Off-screen it freezes; it re-syncs the instant it returns.
   useEffect(() => {
+    if (!inView) return;
+    setTime(diff(targetDate));
     const id = setInterval(() => setTime(diff(targetDate)), 1000);
     return () => clearInterval(id);
-  }, [targetDate]);
+  }, [targetDate, inView]);
 
   const items = [
     { label: 'Días', value: time.days },
@@ -27,6 +33,7 @@ export default function CountdownTimer({ targetDate }) {
 
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-15%' }}
@@ -41,7 +48,7 @@ export default function CountdownTimer({ targetDate }) {
           <span className="font-display text-4xl sm:text-5xl text-ink leading-none tabular-nums">
             {String(item.value).padStart(2, '0')}
           </span>
-          <span className="eyebrow mt-3 text-[0.6rem] sm:text-[0.65rem]">
+          <span className="eyebrow mt-3 text-[0.66rem] sm:text-[0.72rem]">
             {item.label}
           </span>
         </div>

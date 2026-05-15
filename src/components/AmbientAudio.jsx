@@ -102,13 +102,13 @@ export default function AmbientAudio({ active = true }) {
             }
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           />
-          <span className="relative flex items-center gap-2 text-mutedgold">
+          <span className="relative flex items-center gap-2 text-mutedgoldDeep">
             {enabled ? (
               <Volume2 size={14} strokeWidth={1.2} />
             ) : (
               <VolumeX size={14} strokeWidth={1.2} />
             )}
-            <span className="eyebrow text-[0.55rem] text-ink/65">
+            <span className="eyebrow text-[0.66rem] text-ink/75">
               {enabled ? 'Atmósfera' : 'Silencio'}
             </span>
           </span>

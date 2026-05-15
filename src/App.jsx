@@ -16,6 +16,7 @@ const EventDetails = lazy(() => import('./sections/EventDetails'));
 const Location = lazy(() => import('./sections/Location'));
 const Parents = lazy(() => import('./sections/Parents'));
 const Family = lazy(() => import('./sections/Family'));
+const Guests = lazy(() => import('./sections/Guests'));
 const RSVP = lazy(() => import('./sections/RSVP'));
 const FinalBlessing = lazy(() => import('./sections/FinalBlessing'));
 
@@ -67,6 +68,7 @@ export default function App() {
           <Location />
           <Parents />
           <Family />
+          <Guests />
           <RSVP />
           <FinalBlessing />
         </Suspense>
@@ -74,7 +76,7 @@ export default function App() {
         <footer className="relative py-12 text-center"
           style={{ paddingBottom: 'calc(3rem + env(safe-area-inset-bottom))' }}
         >
-          <p className="eyebrow text-[0.55rem] text-ink/40">
+          <p className="eyebrow text-[0.7rem] text-ink/65">
             Gracias por acompañarnos
           </p>
         </footer>

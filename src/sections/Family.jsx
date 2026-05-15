@@ -22,7 +22,7 @@ export default function Family() {
           <h2 className="font-display mt-6 text-[clamp(2rem,5vw,3.6rem)] leading-[1.05] text-ink balance">
             Quienes los <span className="italic-display gold-text">acompañan.</span>
           </h2>
-          <p className="mt-7 max-w-sm text-sm sm:text-base leading-[1.85] text-ink/60 font-light pretty">
+          <p className="mt-7 max-w-sm text-sm sm:text-base leading-[1.85] text-ink/75 font-light pretty">
             Las personas que estarán cerca para cuidarlos y quererlos
             siempre.
           </p>

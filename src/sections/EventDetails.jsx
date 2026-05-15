@@ -65,7 +65,7 @@ export default function EventDetails() {
             className="glass-card group relative flex flex-col items-start gap-4 p-8 sm:p-10"
           >
             <div className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-radial-warm" />
-            <Icon size={22} strokeWidth={1.1} className="text-mutedgold" />
+            <Icon size={22} strokeWidth={1.3} className="text-mutedgoldDeep" />
             <span className="eyebrow">{label}</span>
             <p className="font-display text-2xl sm:text-3xl text-ink leading-tight">
               {value}

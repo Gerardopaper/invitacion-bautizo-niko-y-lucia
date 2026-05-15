@@ -34,7 +34,7 @@ export default function Interlude({ children, mark = true }) {
             className="mx-auto block h-px w-16 origin-center bg-mutedgold/45"
           />
         )}
-        <p className="italic-display mt-10 text-[clamp(1.25rem,2.6vw,1.85rem)] leading-[1.6] text-ink/55">
+        <p className="italic-display mt-10 text-[clamp(1.25rem,2.6vw,1.85rem)] leading-[1.6] text-ink/65">
           {children}
         </p>
       </motion.div>

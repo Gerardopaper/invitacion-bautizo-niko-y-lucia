@@ -23,10 +23,10 @@ export default function InvitationMessage() {
         >
           <span className="eyebrow">La Invitación</span>
           <span className="gold-divider mt-6 block" style={{ width: 48 }} />
-          <p className="italic-display mt-10 text-xl sm:text-2xl text-ink/55 leading-snug balance">
+          <p className="italic-display mt-10 text-xl sm:text-2xl text-ink/70 leading-snug balance">
             “Dejad que los niños vengan a mí.”
           </p>
-          <p className="eyebrow mt-5 text-mutedgold">Mateo 19:14</p>
+          <p className="eyebrow mt-5 text-mutedgoldDeep">Mateo 19:14</p>
         </motion.div>
 
         <motion.div

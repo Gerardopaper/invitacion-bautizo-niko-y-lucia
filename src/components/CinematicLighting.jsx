@@ -39,11 +39,11 @@ export default function CinematicLighting() {
 
   const aX = useTransform(smoothProgress, [0, 1], ['38%', '62%']);
   const aY = useTransform(smoothProgress, [0, 1], ['-8%', '18%']);
-  const aOp = useTransform(smoothProgress, [0, 0.5, 1], [0.55, 0.7, 0.4]);
+  const aOp = useTransform(smoothProgress, [0, 0.5, 1], [0.72, 0.92, 0.58]);
 
   const bX = useTransform(smoothProgress, [0, 1], ['78%', '42%']);
   const bY = useTransform(smoothProgress, [0, 1], ['30%', '80%']);
-  const bOp = useTransform(smoothProgress, [0, 0.5, 1], [0.4, 0.55, 0.65]);
+  const bOp = useTransform(smoothProgress, [0, 0.5, 1], [0.55, 0.74, 0.84]);
 
   const cX = useTransform(smoothProgress, [0, 1], ['12%', '28%']);
   const cY = useTransform(smoothProgress, [0, 1], ['110%', '70%']);
@@ -70,12 +70,12 @@ export default function CinematicLighting() {
           translateY: '-50%',
           opacity: aOp,
           background:
-            'radial-gradient(circle, rgba(216,194,154,0.42) 0%, rgba(216,194,154,0.18) 28%, rgba(251,248,242,0) 65%)',
+            'radial-gradient(circle, rgba(216,194,154,0.56) 0%, rgba(216,194,154,0.26) 28%, rgba(251,248,242,0) 66%)',
           filter: `blur(${blurA}px)`,
         }}
         // Breathing scale loop is the costliest animation here. Keep it
         // on desktop only — mobile gets the drift, not the breath.
-        animate={coarse ? undefined : { scale: [1, 1.04, 1] }}
+        animate={coarse ? undefined : { scale: [1, 1.06, 1] }}
         transition={
           coarse
             ? undefined
@@ -93,10 +93,10 @@ export default function CinematicLighting() {
           translateY: '-50%',
           opacity: bOp,
           background:
-            'radial-gradient(circle, rgba(239,231,216,0.55) 0%, rgba(239,231,216,0.18) 35%, rgba(251,248,242,0) 70%)',
+            'radial-gradient(circle, rgba(239,231,216,0.72) 0%, rgba(239,231,216,0.26) 35%, rgba(251,248,242,0) 70%)',
           filter: `blur(${blurB}px)`,
         }}
-        animate={coarse ? undefined : { scale: [1, 1.05, 1] }}
+        animate={coarse ? undefined : { scale: [1, 1.07, 1] }}
         transition={
           coarse
             ? undefined
@@ -117,10 +117,10 @@ export default function CinematicLighting() {
             translateX: '-50%',
             translateY: '-50%',
             background:
-              'radial-gradient(circle, rgba(130,128,90,0.26) 0%, rgba(130,128,90,0.09) 32%, rgba(251,248,242,0) 66%)',
+              'radial-gradient(circle, rgba(130,128,90,0.34) 0%, rgba(130,128,90,0.13) 32%, rgba(251,248,242,0) 66%)',
             filter: `blur(${blurC}px)`,
           }}
-          animate={{ opacity: [0.4, 0.65, 0.4], scale: [1, 1.06, 1] }}
+          animate={{ opacity: [0.55, 0.82, 0.55], scale: [1, 1.08, 1] }}
           transition={{ duration: 19, repeat: Infinity, ease: 'easeInOut' }}
         />
       )}

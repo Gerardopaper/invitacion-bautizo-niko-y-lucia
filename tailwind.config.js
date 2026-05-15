@@ -11,6 +11,7 @@ export default {
         pearl: '#EFE7D8',
         beige: '#E8DFCC',
         mutedgold: '#A88A4F',
+        mutedgoldDeep: '#6B5526',
         // Restrained luxury olive — muted, desaturated, "olive silk".
         // An accent and a shadow undertone, never a fill.
         olive: '#82805A',

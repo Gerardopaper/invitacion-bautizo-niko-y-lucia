@@ -34,7 +34,7 @@ export default function LoadingScreen({ visible }) {
                 ease: 'easeInOut',
                 delay: 0.4,
               }}
-              className="eyebrow mt-10 text-mutedgold/80"
+              className="eyebrow mt-10 text-mutedgoldDeep"
             >
               In Nomine Patris
             </motion.span>
