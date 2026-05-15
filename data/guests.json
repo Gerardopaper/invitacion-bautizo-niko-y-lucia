@@ -132,5 +132,11 @@
     "family_name": "Familia Gonzalez Hudson",
     "reserved_spots": 2,
     "guests": ["Julio", "Ariadna"]
+  },
+  {
+    "gid": "23",
+    "family_name": "Familia Rivera León",
+    "reserved_spots": 2,
+    "guests": ["Magdiel", "Meissa"]
   }
 ]
