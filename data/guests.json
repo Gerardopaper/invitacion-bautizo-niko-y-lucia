@@ -1,7 +1,7 @@
 [
   {
     "gid": "1",
-    "family_name": "Familia Palma Botello",
+    "family_name": "Familia Palma",
     "reserved_spots": 2,
     "guests": ["Mayra", "Gustavo"]
   },
@@ -83,13 +83,13 @@
   {
     "gid": "13",
     "family_name": "Familia Montoya Castañon",
-    "reserved_spots": 1,
+    "reserved_spots": 3,
     "guests": ["Guillermo", "Carmen", "Camila"]
   },
   {
     "gid": "14",
     "family_name": "Familia Montoya Perrusquia",
-    "reserved_spots": 1,
+    "reserved_spots": 5,
     "guests": ["Paty", "Kary", "Yuli", "Ian", "Jorge"]
   },
   {
