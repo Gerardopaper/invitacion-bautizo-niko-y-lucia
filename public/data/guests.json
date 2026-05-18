@@ -138,5 +138,17 @@
     "family_name": "Familia Rivera León",
     "reserved_spots": 2,
     "guests": ["Magdiel", "Meissa"]
+  },
+  {
+    "gid": "24",
+    "family_name": "Familia Aguilar Marin",
+    "reserved_spots": 2,
+    "guests": ["Irving", "Karla"]
+  },
+  {
+    "gid": "25",
+    "family_name": "Familia Santiago Ferrer",
+    "reserved_spots": 1,
+    "guests": ["Alan"]
   }
 ]
