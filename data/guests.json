@@ -150,5 +150,11 @@
     "family_name": "Familia Santiago Ferrer",
     "reserved_spots": 1,
     "guests": ["Alan"]
+  },
+  {
+    "gid": "26",
+    "family_name": "Familia Dorado",
+    "reserved_spots": 1,
+    "guests": ["Sarahí"]
   }
 ]
