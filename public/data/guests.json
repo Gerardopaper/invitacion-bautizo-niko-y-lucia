@@ -156,5 +156,11 @@
     "family_name": "Familia Dorado",
     "reserved_spots": 1,
     "guests": ["Sarahí"]
+  },
+  {
+    "gid": "27",
+    "family_name": "Familia y Amigos",
+    "reserved_spots": 1,
+    "guests": ["Eduardo Morales", "Isabel Canela", "David Rebollo"]
   }
 ]
