@@ -14,7 +14,7 @@ export default function RSVP() {
 
   // Guest-aware prefilled message — warm, never transactional.
   const waMessage = personalized
-    ? `Hola, somos ${guest.family_name}. Confirmamos nuestra presencia en la celebración de Lucia & Niko.`
+    ? `Confirmamos nuestra presencia en la celebración de Lucia & Niko. Att: ${guest.family_name}`
     : event.whatsapp.message;
   const waLink = `https://wa.me/${event.whatsapp.phone}?text=${encodeURIComponent(
     waMessage

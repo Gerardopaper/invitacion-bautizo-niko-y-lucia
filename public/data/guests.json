@@ -162,5 +162,10 @@
     "family_name": "Familia y Amigos",
     "reserved_spots": 1,
     "guests": ["Eduardo Morales", "Isabel Canela", "David Rebollo"]
+  },
+  {
+    "gid": "28",
+    "family_name": "Koco Kahlo",
+    "reserved_spots": 2
   }
 ]
